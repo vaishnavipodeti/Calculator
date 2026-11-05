@@ -2,6 +2,8 @@
 import { useState } from 'react'
 
 const App = () => {
+  const API_URL = 'https://calculator-mtq1.onrender.com'
+
   const [display, setDisplay] = useState('0')
   const [firstNum, setFirstNum] = useState(null)
   const [operator, setOperator] = useState('')
@@ -71,7 +73,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/${endpoints[operator]}/${firstNum}/${display}`
+        `${API_URL}/${endpoints[operator]}/${firstNum}/${display}`
       )
 
       const data = await response.json()
@@ -103,7 +105,7 @@ const App = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/square/${number}`
+        `${API_URL}/square/${number}`
       )
 
       const data = await response.json()
@@ -162,26 +164,21 @@ const App = () => {
           <button onClick={() => chooseOperator('mod')} className="bg-blue-300 p-4 rounded-lg">mod</button>
           <button onClick={() => chooseOperator('percentage')} className="bg-blue-300 p-4 rounded-lg">%</button>
           <button onClick={calculateSquare} className="bg-blue-300 p-4 rounded-lg">x²</button>
-
           <button onClick={() => handleNumber('7')} className="bg-white p-4 rounded-lg">7</button>
           <button onClick={() => handleNumber('8')} className="bg-white p-4 rounded-lg">8</button>
           <button onClick={() => handleNumber('9')} className="bg-white p-4 rounded-lg">9</button>
           <button onClick={() => chooseOperator('/')} className="bg-blue-300 p-4 rounded-lg">÷</button>
-
           <button onClick={() => handleNumber('4')} className="bg-white p-4 rounded-lg">4</button>
           <button onClick={() => handleNumber('5')} className="bg-white p-4 rounded-lg">5</button>
           <button onClick={() => handleNumber('6')} className="bg-white p-4 rounded-lg">6</button>
           <button onClick={() => chooseOperator('*')} className="bg-blue-300 p-4 rounded-lg">×</button>
-
           <button onClick={() => handleNumber('1')} className="bg-white p-4 rounded-lg">1</button>
           <button onClick={() => handleNumber('2')} className="bg-white p-4 rounded-lg">2</button>
           <button onClick={() => handleNumber('3')} className="bg-white p-4 rounded-lg">3</button>
           <button onClick={() => chooseOperator('-')} className="bg-blue-300 p-4 rounded-lg">−</button>
-
           <button onClick={() => handleNumber('0')} className="bg-white p-4 rounded-lg col-span-2">0</button>
           <button onClick={handleDecimal} className="bg-white p-4 rounded-lg">.</button>
           <button onClick={() => chooseOperator('+')} className="bg-blue-300 p-4 rounded-lg">+</button>
-
           <button onClick={calculate} className="bg-green-400 p-4 rounded-lg col-span-4">=</button>
 
         </div>
